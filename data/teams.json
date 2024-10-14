@@ -1,0 +1,557 @@
+[
+  {
+    "sport": "boxing",
+    "teams": [
+      {
+        "name": "Iron Fist",
+        "speed": 14,
+        "agility": 40,
+        "attack": 88,
+        "defense": 2,
+        "overall": 36,
+        "randomized": true
+      },
+      {
+        "name": "Thunder Punch",
+        "speed": 65,
+        "agility": 100,
+        "attack": 33,
+        "defense": 90,
+        "overall": 72,
+        "randomized": true
+      },
+      {
+        "name": "Steel Jaw",
+        "speed": 77,
+        "agility": 26,
+        "attack": 37,
+        "defense": 96,
+        "overall": 59,
+        "randomized": true
+      },
+      {
+        "name": "The Viper",
+        "speed": 17,
+        "agility": 56,
+        "attack": 22,
+        "defense": 19,
+        "overall": 29,
+        "randomized": true
+      },
+      {
+        "name": "Shadow Boxer",
+        "speed": 86,
+        "agility": 34,
+        "attack": 30,
+        "defense": 14,
+        "overall": 41,
+        "randomized": true
+      },
+      {
+        "name": "Raging Bull",
+        "speed": 42,
+        "agility": 26,
+        "attack": 62,
+        "defense": 80,
+        "overall": 53,
+        "randomized": true
+      },
+      {
+        "name": "Knockout King",
+        "speed": 42,
+        "agility": 48,
+        "attack": 61,
+        "defense": 69,
+        "overall": 55,
+        "randomized": true
+      },
+      {
+        "name": "The Phantom",
+        "speed": 2,
+        "agility": 88,
+        "attack": 8,
+        "defense": 100,
+        "overall": 50,
+        "randomized": true
+      },
+      {
+        "name": "Brick Wall",
+        "speed": 22,
+        "agility": 36,
+        "attack": 53,
+        "defense": 6,
+        "overall": 29,
+        "randomized": true
+      },
+      {
+        "name": "The Hurricane",
+        "speed": 41,
+        "agility": 38,
+        "attack": 82,
+        "defense": 30,
+        "overall": 48,
+        "randomized": true
+      },
+      {
+        "name": "Iron Will",
+        "speed": 94,
+        "agility": 37,
+        "attack": 12,
+        "defense": 62,
+        "overall": 51,
+        "randomized": true
+      },
+      {
+        "name": "Golden Gloves",
+        "speed": 32,
+        "agility": 36,
+        "attack": 11,
+        "defense": 58,
+        "overall": 34,
+        "randomized": true
+      },
+      {
+        "name": "The Tornado",
+        "speed": 39,
+        "agility": 26,
+        "attack": 72,
+        "defense": 25,
+        "overall": 41,
+        "randomized": true
+      },
+      {
+        "name": "Lightning Strike",
+        "speed": 73,
+        "agility": 26,
+        "attack": 15,
+        "defense": 16,
+        "overall": 33,
+        "randomized": true
+      },
+      {
+        "name": "The Cobra",
+        "speed": 33,
+        "agility": 59,
+        "attack": 45,
+        "defense": 79,
+        "overall": 54,
+        "randomized": true
+      },
+      {
+        "name": "Bone Crusher",
+        "speed": 64,
+        "agility": 16,
+        "attack": 23,
+        "defense": 18,
+        "overall": 30,
+        "randomized": true
+      },
+      {
+        "name": "The Predator",
+        "speed": 7,
+        "agility": 56,
+        "attack": 14,
+        "defense": 21,
+        "overall": 25,
+        "randomized": true
+      },
+      {
+        "name": "Red Fury",
+        "speed": 38,
+        "agility": 19,
+        "attack": 7,
+        "defense": 78,
+        "overall": 36,
+        "randomized": true
+      },
+      {
+        "name": "The Beast",
+        "speed": 62,
+        "agility": 60,
+        "attack": 42,
+        "defense": 52,
+        "overall": 54,
+        "randomized": true
+      },
+      {
+        "name": "Shadow Fury",
+        "speed": 56,
+        "agility": 77,
+        "attack": 71,
+        "defense": 91,
+        "overall": 74,
+        "randomized": true
+      }
+    ]
+  },
+  {
+    "sport": "hockey",
+    "teams": [
+      {
+        "name": "Ice Titans",
+        "speed": 20,
+        "agility": 22,
+        "attack": 70,
+        "defense": 60,
+        "overall": 43,
+        "randomized": true
+      },
+      {
+        "name": "Frozen Warriors",
+        "speed": 24,
+        "agility": 43,
+        "attack": 94,
+        "defense": 24,
+        "overall": 46,
+        "randomized": true
+      },
+      {
+        "name": "Blizzard Bears",
+        "speed": 23,
+        "agility": 50,
+        "attack": 44,
+        "defense": 5,
+        "overall": 31,
+        "randomized": true
+      },
+      {
+        "name": "Thunder Blades",
+        "speed": 1,
+        "agility": 33,
+        "attack": 59,
+        "defense": 95,
+        "overall": 47,
+        "randomized": true
+      },
+      {
+        "name": "Frost Giants",
+        "speed": 38,
+        "agility": 8,
+        "attack": 38,
+        "defense": 30,
+        "overall": 29,
+        "randomized": true
+      },
+      {
+        "name": "Arctic Wolves",
+        "speed": 28,
+        "agility": 13,
+        "attack": 74,
+        "defense": 57,
+        "overall": 43,
+        "randomized": true
+      },
+      {
+        "name": "Glacier Hawks",
+        "speed": 42,
+        "agility": 19,
+        "attack": 62,
+        "defense": 26,
+        "overall": 37,
+        "randomized": true
+      },
+      {
+        "name": "Northern Lights",
+        "speed": 1,
+        "agility": 55,
+        "attack": 60,
+        "defense": 52,
+        "overall": 42,
+        "randomized": true
+      },
+      {
+        "name": "Polar Panthers",
+        "speed": 74,
+        "agility": 50,
+        "attack": 79,
+        "defense": 15,
+        "overall": 55,
+        "randomized": true
+      },
+      {
+        "name": "Avalanche Riders",
+        "speed": 19,
+        "agility": 26,
+        "attack": 12,
+        "defense": 78,
+        "overall": 34,
+        "randomized": true
+      },
+      {
+        "name": "Ice Breakers",
+        "speed": 2,
+        "agility": 18,
+        "attack": 96,
+        "defense": 46,
+        "overall": 41,
+        "randomized": true
+      },
+      {
+        "name": "Snow Leopards",
+        "speed": 100,
+        "agility": 23,
+        "attack": 86,
+        "defense": 97,
+        "overall": 77,
+        "randomized": true
+      },
+      {
+        "name": "Frozen Flames",
+        "speed": 25,
+        "agility": 67,
+        "attack": 55,
+        "defense": 14,
+        "overall": 40,
+        "randomized": true
+      },
+      {
+        "name": "Winter Storm",
+        "speed": 47,
+        "agility": 1,
+        "attack": 58,
+        "defense": 75,
+        "overall": 45,
+        "randomized": true
+      },
+      {
+        "name": "The Chill",
+        "speed": 63,
+        "agility": 53,
+        "attack": 9,
+        "defense": 64,
+        "overall": 47,
+        "randomized": true
+      },
+      {
+        "name": "Frostbite Foxes",
+        "speed": 56,
+        "agility": 59,
+        "attack": 40,
+        "defense": 74,
+        "overall": 57,
+        "randomized": true
+      },
+      {
+        "name": "Cold Crushers",
+        "speed": 69,
+        "agility": 61,
+        "attack": 5,
+        "defense": 95,
+        "overall": 58,
+        "randomized": true
+      },
+      {
+        "name": "Snow Owls",
+        "speed": 93,
+        "agility": 92,
+        "attack": 74,
+        "defense": 60,
+        "overall": 80,
+        "randomized": true
+      },
+      {
+        "name": "Ice Predators",
+        "speed": 60,
+        "agility": 74,
+        "attack": 44,
+        "defense": 66,
+        "overall": 61,
+        "randomized": true
+      },
+      {
+        "name": "Glacial Guardians",
+        "speed": 34,
+        "agility": 98,
+        "attack": 54,
+        "defense": 59,
+        "overall": 61,
+        "randomized": true
+      }
+    ]
+  },
+  {
+    "sport": "soccer",
+    "teams": [
+      {
+        "name": "Thunder Strikers",
+        "speed": 19,
+        "agility": 80,
+        "attack": 53,
+        "defense": 25,
+        "overall": 44,
+        "randomized": true
+      },
+      {
+        "name": "Golden Eagles",
+        "speed": 71,
+        "agility": 38,
+        "attack": 3,
+        "defense": 16,
+        "overall": 32,
+        "randomized": true
+      },
+      {
+        "name": "Shadow Kickers",
+        "speed": 82,
+        "agility": 72,
+        "attack": 82,
+        "defense": 40,
+        "overall": 69,
+        "randomized": true
+      },
+      {
+        "name": "Emerald United",
+        "speed": 64,
+        "agility": 47,
+        "attack": 4,
+        "defense": 28,
+        "overall": 36,
+        "randomized": true
+      },
+      {
+        "name": "Crimson Lions",
+        "speed": 68,
+        "agility": 77,
+        "attack": 62,
+        "defense": 10,
+        "overall": 54,
+        "randomized": true
+      },
+      {
+        "name": "Rapid Rangers",
+        "speed": 39,
+        "agility": 89,
+        "attack": 79,
+        "defense": 11,
+        "overall": 55,
+        "randomized": true
+      },
+      {
+        "name": "Blue Sharks",
+        "speed": 39,
+        "agility": 21,
+        "attack": 22,
+        "defense": 76,
+        "overall": 40,
+        "randomized": true
+      },
+      {
+        "name": "Silver Arrows",
+        "speed": 86,
+        "agility": 21,
+        "attack": 16,
+        "defense": 35,
+        "overall": 40,
+        "randomized": true
+      },
+      {
+        "name": "Wild Stallions",
+        "speed": 22,
+        "agility": 45,
+        "attack": 60,
+        "defense": 91,
+        "overall": 55,
+        "randomized": true
+      },
+      {
+        "name": "Fire Falcons",
+        "speed": 59,
+        "agility": 23,
+        "attack": 18,
+        "defense": 59,
+        "overall": 40,
+        "randomized": true
+      },
+      {
+        "name": "The Spartans",
+        "speed": 83,
+        "agility": 22,
+        "attack": 41,
+        "defense": 12,
+        "overall": 40,
+        "randomized": true
+      },
+      {
+        "name": "Mighty Panthers",
+        "speed": 8,
+        "agility": 96,
+        "attack": 34,
+        "defense": 76,
+        "overall": 54,
+        "randomized": true
+      },
+      {
+        "name": "Desert Foxes",
+        "speed": 3,
+        "agility": 46,
+        "attack": 86,
+        "defense": 86,
+        "overall": 55,
+        "randomized": true
+      },
+      {
+        "name": "Ocean Warriors",
+        "speed": 90,
+        "agility": 44,
+        "attack": 51,
+        "defense": 99,
+        "overall": 71,
+        "randomized": true
+      },
+      {
+        "name": "Galaxy Rovers",
+        "speed": 64,
+        "agility": 36,
+        "attack": 13,
+        "defense": 4,
+        "overall": 29,
+        "randomized": true
+      },
+      {
+        "name": "Violet Vipers",
+        "speed": 53,
+        "agility": 67,
+        "attack": 33,
+        "defense": 72,
+        "overall": 56,
+        "randomized": true
+      },
+      {
+        "name": "Scarlet Knights",
+        "speed": 13,
+        "agility": 52,
+        "attack": 66,
+        "defense": 5,
+        "overall": 34,
+        "randomized": true
+      },
+      {
+        "name": "Lightning Bolts",
+        "speed": 79,
+        "agility": 81,
+        "attack": 79,
+        "defense": 39,
+        "overall": 70,
+        "randomized": true
+      },
+      {
+        "name": "Iron Eagles",
+        "speed": 53,
+        "agility": 7,
+        "attack": 26,
+        "defense": 47,
+        "overall": 33,
+        "randomized": true
+      },
+      {
+        "name": "Steel Strikers",
+        "speed": 55,
+        "agility": 60,
+        "attack": 24,
+        "defense": 5,
+        "overall": 36,
+        "randomized": true
+      }
+    ]
+  }
+]

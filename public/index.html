@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BettingGameDemo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="/src/display/match_history.js"></script>
+    <!-- <script src="/src/display/next_matchups.js"></script> -->
+    <script src="/src/handlers/day_handler.js"></script>
+    <script src="/src/handlers/button_handler.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>BettingGameDemo</h1>
+
+      <!-- Bank Account Section -->
+      <div id="bank">
+        <h2>Bank Account</h2>
+        <p>Balance: $<span id="balance">1000</span></p>
+      </div>
+
+      <!-- Bet Form Section -->
+      <form id="betForm">
+        <label for="betAmount">Bet Amount:</label>
+        <input type="number" id="betAmount" name="betAmount" min="1" required />
+        <label for="betSubject">Bet On:</label>
+        <select id="betSubject" name="betSubject">
+          <option value="boxing">Boxing</option>
+          <option value="hockey">Hockey</option>
+          <option value="soccer">Soccer</option>
+        </select>
+        <button type="button" id="placeBet">Place Bet</button>
+      </form>
+
+      <!-- Current Bets Section -->
+      <div id="currentBets">
+        <h2>Current Bets</h2>
+        <ul id="currentBetList"></ul>
+      </div>
+
+      <!-- Bet History Section -->
+      <div id="betHistory">
+        <h2>Bet History</h2>
+        <ul id="betList"></ul>
+      </div>
+
+      <!-- Sport Selection Section -->
+      <div id="sportSelection">
+        <h2>Select Sport</h2>
+        <select id="sportSelect" name="sportSelect">
+          <option value="">Select a sport</option>
+          <option value="boxing">Boxing</option>
+          <option value="hockey">Hockey</option>
+          <option value="soccer">Soccer</option>
+        </select>
+      </div>
+
+      <!-- Fighter/Team Selection Section -->
+      <div id="teamSelection">
+        <h2>Select Fighter/Team</h2>
+        <select id="teamSelect" name="teamSelect">
+          <option value="" disabled selected>Select a team</option>
+        </select>
+      </div>
+
+      <!-- Fighter/Team Match History Section -->
+      <div id="teamMatchHistory">
+        <h2>Fighter/Team Match History</h2>
+        <ul id="teamHistoryList">
+          <!-- Match history will be displayed here dynamically -->
+        </ul>
+      </div>
+
+      <!-- Upcoming Matchups Section -->
+      <div id="matchups">
+        <h2>Upcoming Matchups</h2>
+        <ul id="upcomingMatchupsList">
+        </ul>
+      </div>
+
+      <!-- Match Results History Section -->
+      <div id="matchResults">
+        <h2>Match Results History</h2>
+        <div id="resultsContainer">
+          <!-- Sport-specific match results will be added here dynamically -->
+          </div>
+        </div>
+        <button type="button" id="nextDay">Next Day</button>
+      </div>
+
+      <!-- <div id="result"></div> -->
+    </div>
+
+    <div class="container">
+      <!-- Generate, Load, and Update Buttons -->
+      <button id="generateScheduleBtn">Generate Schedule</button>
+
+    </div>
+  </body>
+</html>
