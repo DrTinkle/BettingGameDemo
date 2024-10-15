@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const rootPath = path.join(__dirname, '../../../');
 
-// Function to load JSON data from the file
 function loadJsonData(filePath) {
   const fullPath = path.join(rootPath, '/data', filePath);
   try {
@@ -61,7 +60,7 @@ async function calculateOddsForMatchup(teamA, teamB) {
   }
 
   if (winRatioTeamA > winRatioTeamB) {
-    oddsTeamA = (parseFloat(oddsTeamA) - 0.15).toFixed(2); // Give better odds if Team A has better overall win ratio
+    oddsTeamA = (parseFloat(oddsTeamA) - 0.15).toFixed(2);
     oddsTeamB = (parseFloat(oddsTeamB) + 0.15).toFixed(2);
   } else if (winRatioTeamB > winRatioTeamA) {
     oddsTeamB = (parseFloat(oddsTeamB) - 0.15).toFixed(2);
@@ -74,7 +73,6 @@ async function calculateOddsForMatchup(teamA, teamB) {
   //   oddsTeamB,
   // });
 
-  // Return the calculated odds along with match statistics
   return {
     teamA,
     teamB,
@@ -96,10 +94,9 @@ async function calculateOddsForMatchup(teamA, teamB) {
   };
 }
 
-// Gather stats for both teams from match history using team history
 async function gatherTeamStats(teamA, teamB) {
-  const teamHistory = await loadJsonData('team_history.json'); // Load team history with match references
-  const matchHistory = await loadJsonData('match_history.json'); // Load all match history
+  const teamHistory = await loadJsonData('team_history.json');
+  const matchHistory = await loadJsonData('match_history.json');
 
   // console.log('Loaded team history:', teamHistory);
   // console.log('Loaded match history:', matchHistory);
@@ -116,7 +113,6 @@ async function gatherTeamStats(teamA, teamB) {
   let overallTeamAWins = 0;
   let overallTeamBWins = 0;
 
-  // Get the match references for both teams
   const teamAMatchIds = teamHistory[teamA]?.matches || [];
   const teamBMatchIds = teamHistory[teamB]?.matches || [];
 

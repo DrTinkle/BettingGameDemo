@@ -1,4 +1,4 @@
-// Load team history data from team_history.json
+
 async function loadTeamHistory() {
   try {
     const response = await fetch('../../data/team_history.json');
@@ -9,7 +9,6 @@ async function loadTeamHistory() {
   }
 }
 
-// Load full match details from match_history.json
 async function loadFullMatchHistory() {
   try {
     const response = await fetch('../../data/match_history.json');
@@ -20,12 +19,10 @@ async function loadFullMatchHistory() {
   }
 }
 
-// Function to update the match history for a selected team
 async function updateTeamHistory(teamName) {
   const teamHistory = await loadTeamHistory();
   const fullMatchHistory = await loadFullMatchHistory();
 
-  // Find the team's history by name
   const team = teamHistory[teamName];
 
   if (!team) {
@@ -34,7 +31,7 @@ async function updateTeamHistory(teamName) {
   }
 
   // Limit to the last 10 matches and reverse the order so that the newest match is on top
-  const recentMatches = team.matches.slice(-10).reverse(); // Get the last 10 matches and reverse the order
+  const recentMatches = team.matches.slice(-10).reverse();
 
   // Clear the existing list
   const teamHistoryList = document.getElementById('teamHistoryList');
@@ -66,20 +63,17 @@ async function updateTeamHistory(teamName) {
   });
 }
 
-// Function to populate the team options based on selected sport
 async function populateTeamOptions(sport) {
   const teamsData = await loadTeamsData();
-  console.log('Teams Data:', teamsData); // Log to check if data is loaded correctly
+  // console.log('Teams Data:', teamsData);
 
-  // Find the sport object that matches the selected sport
   const sportObject = teamsData.find((entry) => entry.sport === sport);
-  console.log('Sport Object:', sportObject); // Log to check the sport object
+  // console.log('Sport Object:', sportObject);
 
-  // Get the teams for the selected sport or default to an empty array
   const sportTeams = sportObject ? sportObject.teams : [];
 
   const teamSelect = document.getElementById('teamSelect');
-  teamSelect.innerHTML = ''; // Clear previous options
+  teamSelect.innerHTML = '';
 
   // Populate the team selection dropdown
   sportTeams.forEach((team) => {
@@ -89,40 +83,37 @@ async function populateTeamOptions(sport) {
     teamSelect.appendChild(option);
   });
 
-  // Automatically update the team history when the first team is selected
+  // Update the team history
   if (sportTeams.length > 0) {
     updateTeamHistory(sportTeams[0].name);
   }
 }
 
-// Load team data (assuming teams.json is available)
 async function loadTeamsData() {
   try {
     const response = await fetch('../data/teams.json');
     const teamsData = await response.json();
-    console.log('Fetched Teams Data:', teamsData); // Log the fetched data
+    // console.log('Fetched Teams Data:', teamsData);
     return teamsData;
   } catch (error) {
     console.error('Error loading teams data:', error);
   }
 }
 
-// Ensure DOM is fully loaded before adding event listeners
+// Event listner for fighter/team selector
 document.addEventListener('DOMContentLoaded', function () {
-  // Event listener for team selection change
   const teamSelect = document.getElementById('teamSelect');
   teamSelect.addEventListener('change', function (event) {
     const selectedTeam = event.target.value;
-    updateTeamHistory(selectedTeam); // Update the match history when a new team is selected
+    updateTeamHistory(selectedTeam);
   });
 
-  // Event listener for sport selection change (to repopulate team options)
+  // Event listener for sport selector
   const sportSelect = document.getElementById('sportSelect');
   sportSelect.addEventListener('change', function (event) {
     const selectedSport = event.target.value;
     populateTeamOptions(selectedSport); // Populate teams based on the selected sport
   });
 
-  // Initial load for sport and team options
-  populateTeamOptions(sportSelect.value); // Load the first sport's teams on page load
+  populateTeamOptions(sportSelect.value);
 });

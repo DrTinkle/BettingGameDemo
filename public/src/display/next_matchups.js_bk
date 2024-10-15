@@ -1,4 +1,3 @@
-// Load the schedule data (next matchups) from schedule.json
 async function loadScheduleData() {
   try {
     const response = await fetch('../data/schedule.json');
@@ -9,7 +8,6 @@ async function loadScheduleData() {
   }
 }
 
-// Function to fetch odds from the API
 async function fetchOdds(teamA, teamB) {
   try {
     const response = await fetch(`/api/calculate-odds?teamA=${teamA}&teamB=${teamB}`);
@@ -19,55 +17,49 @@ async function fetchOdds(teamA, teamB) {
     }
 
     const odds = await response.json();
-    console.log(`API Response for odds:`, odds); // Debugging the response
+    console.log(`API Response for odds:`, odds);
 
-    return odds; // Return the parsed JSON response
+    return odds;
   } catch (error) {
     console.error('Error fetching odds:', error);
-    return {}; // Return an empty object in case of error
+    return {};
   }
 }
 
 async function listNextMatchups() {
   const scheduleData = await loadScheduleData();
   const matchupsList = document.getElementById('upcomingMatchupsList');
-  matchupsList.innerHTML = ''; // Clear any existing content
+  matchupsList.innerHTML = '';
 
-  // Loop through each sport in the schedule
   for (const sport of Object.keys(scheduleData)) {
     const sportMatchups = scheduleData[sport]?.matchups;
 
     if (!sportMatchups || sportMatchups.length === 0) {
       console.error(`No matchups found for ${sport}`);
-      continue; // Skip to the next sport if no matchups are found
+      continue;
     }
 
-    // Create a subtitle for the sport
     const sportTitle = document.createElement('h3');
     sportTitle.textContent = `${sport.charAt(0).toUpperCase() + sport.slice(1)} Upcoming Match`;
     matchupsList.appendChild(sportTitle);
 
-    // Get the first upcoming matchup for the sport
     const firstMatch = sportMatchups[0];
 
-    // Fetch odds from the API
     let odds;
     try {
-      odds = await fetchOdds(firstMatch.teamA, firstMatch.teamB); // Wait for the odds to be fetched
-      console.log(`Odds for ${firstMatch.teamA} vs ${firstMatch.teamB}:`, odds); // Debugging
+      odds = await fetchOdds(firstMatch.teamA, firstMatch.teamB);
+      console.log(`Odds for ${firstMatch.teamA} vs ${firstMatch.teamB}:`, odds);
     } catch (error) {
       console.error(`Error fetching odds for ${firstMatch.teamA} vs ${firstMatch.teamB}:`, error);
-      odds = {}; // Fallback to empty object in case of error
+      odds = {};
     }
 
-    // Check if the odds are correctly returned
     const oddsTeamA = odds?.oddsTeamA !== undefined ? odds.oddsTeamA : 'N/A';
     const oddsDraw = odds?.oddsDraw !== undefined ? odds.oddsDraw : 'N/A';
     const oddsTeamB = odds?.oddsTeamB !== undefined ? odds.oddsTeamB : 'N/A';
 
-    console.log(`Displaying odds: ${oddsTeamA} | ${oddsDraw} | ${oddsTeamB}`); // Debugging
+    console.log(`Displaying odds: ${oddsTeamA} | ${oddsDraw} | ${oddsTeamB}`);
 
-    // Create a table row for matchup and odds
     const listItem = document.createElement('li');
     listItem.innerHTML = `<span>${firstMatch.teamA} vs ${firstMatch.teamB}</span> 
       <span>Odds: ${oddsTeamA} | ${oddsDraw} | ${oddsTeamB}</span>`;
@@ -75,7 +67,6 @@ async function listNextMatchups() {
   }
 }
 
-// Initial load for all sports' next matchups
 document.addEventListener('DOMContentLoaded', function () {
   listNextMatchups(); // Load matchups for all sports on page load
 });

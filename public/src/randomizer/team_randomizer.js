@@ -3,16 +3,14 @@ const path = require('path');
 
 const teamsFilePath = path.join(__dirname, '../../../data/teams.json');
 
-// Load the teams data from the JSON file
 let teamsData;
 try {
   teamsData = JSON.parse(fs.readFileSync(teamsFilePath, 'utf8'));
 } catch (error) {
   console.error('Error reading teams data:', error);
-  process.exit(1); // Exit if there's an issue with reading the file
+  process.exit(1);
 }
 
-// Function to randomize the stats of a team
 function randomizeStats(team) {
   if (!team.randomized) {
     team.speed = Math.floor(Math.random() * 100) + 1;
@@ -31,7 +29,6 @@ teamsData.forEach((sport) => {
   });
 });
 
-// Save the updated teams data back to the JSON file
 try {
   fs.writeFileSync(teamsFilePath, JSON.stringify(teamsData, null, 2));
   console.log('Teams stats have been randomized and updated.');

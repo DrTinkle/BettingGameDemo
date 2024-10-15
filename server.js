@@ -6,18 +6,14 @@ const { handleNextMatch } = require('./public/src/handlers/match_handler');
 const { calculateOddsForMatchup } = require('./public/src/calculators/odds_calculator.js');
 const app = express();
 
-app.use(express.json({ limit: '10mb' })); // To parse JSON request bodies
+app.use(express.json({ limit: '10mb' }));
 
-// Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve data files from the 'data' directory
 app.use('/data', express.static(path.join(__dirname, 'data')));
 
-// Serve simulator files
 app.use('/src/randomizer', express.static(path.join(__dirname, 'public/src/randomizer')));
 
-// Route for the main page (index.html)
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -146,7 +142,6 @@ app.post('/api/next-match', async (req, res) => {
   }
 });
 
-// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

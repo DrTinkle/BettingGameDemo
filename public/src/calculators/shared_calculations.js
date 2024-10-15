@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const rootPath = path.join(__dirname, '../../../');
 
-// Compare team stats
 function compareStats(teamA, teamB) {
   let scoreA = 0;
   let scoreB = 0;
@@ -49,7 +48,6 @@ function generateScore(sport, scoreA, scoreB) {
     }
   };
 
-  // Function to handle boxing scoring
   const generateScoreBoxing = (scoreA, scoreB) => {
     const rounds = 4;
     const knockoutThreshold = 20;

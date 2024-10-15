@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const rootPath = path.join(__dirname, '../../../');
 
-// Function to load data from JSON files
 function loadJsonData(fileName) {
   const filePath = path.join(rootPath, `data/${fileName}.json`);
   try {
@@ -16,7 +15,6 @@ function loadJsonData(fileName) {
   }
 }
 
-// Function to save data to JSON files
 function saveJsonData(fileName, data) {
   const filePath = path.join(rootPath, `data/${fileName}.json`);
   try {
@@ -26,14 +24,12 @@ function saveJsonData(fileName, data) {
   }
 }
 
-// Main handler for the next match
 async function handleNextMatch() {
   const scheduleData = loadJsonData('schedule');
   let matchHistory = loadJsonData('match_history');
   const teamHistory = loadJsonData('team_history');
   const teamsData = loadJsonData('teams');
 
-  // Ensure matchHistory is initialized as an array per sport
   if (!matchHistory) matchHistory = {};
 
   // Find the next match to be played for each sport based on `order`
@@ -41,10 +37,9 @@ async function handleNextMatch() {
     const sportMatchups = scheduleData[sport]?.matchups || [];
 
     // Find the next match to be played based on the lowest `order`
-    const nextMatch = sportMatchups.sort((a, b) => a.order - b.order)[0]; // Get the next match by order
+    const nextMatch = sportMatchups.sort((a, b) => a.order - b.order)[0];
 
     if (nextMatch) {
-      // Fetch team stats for the sport
       const sportTeams = teamsData.find((entry) => entry.sport === sport)?.teams || [];
       const teamAStats = sportTeams.find((team) => team.name === nextMatch.teamA);
       const teamBStats = sportTeams.find((team) => team.name === nextMatch.teamB);
@@ -54,53 +49,46 @@ async function handleNextMatch() {
         return;
       }
 
-      // Compare team stats and generate score
       const { scoreA, scoreB } = compareStats(teamAStats, teamBStats);
       const { scoreTeamA, scoreTeamB } = generateScore(sport, scoreA, scoreB);
       nextMatch.result = `${nextMatch.teamA} ${scoreTeamA} - ${scoreTeamB} ${nextMatch.teamB}`;
 
-      // Calculate odds using calculateOddsForMatchup
       const odds = await calculateOddsForMatchup(nextMatch.teamA, nextMatch.teamB);
 
-      // Determine the winner
       nextMatch.winner =
         scoreTeamA === scoreTeamB ? 'draw' : scoreTeamA > scoreTeamB ? nextMatch.teamA : nextMatch.teamB;
 
-      // Append the match result to matchHistory
       if (!matchHistory[sport]) {
         matchHistory[sport] = { matchups: [] };
       }
 
       const order = matchHistory[sport].matchups.length + 1;
 
-      // Append the match to matchHistory with the original order and matchId
       matchHistory[sport].matchups.push({
         teamA: nextMatch.teamA,
         teamB: nextMatch.teamB,
-        matchId: nextMatch.matchId, // Use the pre-set matchId from the scheduler
+        matchId: nextMatch.matchId,
         scoreTeamA,
         scoreTeamB,
         winner: nextMatch.winner,
         order: order,
       });
 
-      // Add the matchId to teamHistory for both teams
-      if (!teamHistory[nextMatch.teamA]) {
-        teamHistory[nextMatch.teamA] = { matches: [] };
-      }
-      if (!teamHistory[nextMatch.teamB]) {
-        teamHistory[nextMatch.teamB] = { matches: [] };
-      }
-      teamHistory[nextMatch.teamA].matches.push(nextMatch.matchId); // Add matchId for teamA
-      teamHistory[nextMatch.teamB].matches.push(nextMatch.matchId); // Add matchId for teamB
+      // if (!teamHistory[nextMatch.teamA]) {
+      //   teamHistory[nextMatch.teamA] = { matches: [] };
+      // }
+      // if (!teamHistory[nextMatch.teamB]) {
+      //   teamHistory[nextMatch.teamB] = { matches: [] };
+      // }
+      // teamHistory[nextMatch.teamA].matches.push(nextMatch.matchId);
+      // teamHistory[nextMatch.teamB].matches.push(nextMatch.matchId);
 
-      // Remove the match from the schedule (it's now complete)
+      // Remove the match from the schedule
       scheduleData[sport].matchups = scheduleData[sport].matchups.filter((m) => m !== nextMatch);
 
-      // Save the updated match history and schedule
       saveJsonData('match_history', matchHistory);
       saveJsonData('schedule', scheduleData);
-      saveJsonData('team_history', teamHistory); // Save the updated teamHistory
+      saveJsonData('team_history', teamHistory);
 
       console.log(
         `Processed match: ${nextMatch.teamA} vs ${nextMatch.teamB} (Match ID: ${nextMatch.matchId}, Order: ${order})`

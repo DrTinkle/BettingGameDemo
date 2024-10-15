@@ -1,4 +1,3 @@
-// Trigger the backend match handler via API when "Next Day" button is clicked
 function setupNextDayButton() {
   document.getElementById('nextDay').addEventListener('click', async () => {
     try {
@@ -9,7 +8,7 @@ function setupNextDayButton() {
       const result = await response.json();
       if (result.success) {
         console.log('Next match processed successfully');
-        listNextMatchups(); // Refresh the list of matchups after the next match
+        listNextMatchups();
       } else {
         console.error('Failed to process the next match');
       }
@@ -19,7 +18,6 @@ function setupNextDayButton() {
   });
 }
 
-// Load the schedule data (next matchups) from the API
 async function loadScheduleData() {
   try {
     const response = await fetch('/api/schedule');
@@ -30,7 +28,6 @@ async function loadScheduleData() {
   }
 }
 
-// Function to fetch odds from the API
 async function fetchOdds(teamA, teamB) {
   try {
     const response = await fetch(`/api/calculate-odds?teamA=${teamA}&teamB=${teamB}`);
@@ -43,15 +40,14 @@ async function fetchOdds(teamA, teamB) {
     return odds;
   } catch (error) {
     console.error('Error fetching odds:', error);
-    return {}; // Return an empty object in case of error
+    return {};
   }
 }
 
-// List the next matchups for all sports and display odds
 async function listNextMatchups() {
   const scheduleData = await loadScheduleData();
   const matchupsList = document.getElementById('upcomingMatchupsList');
-  matchupsList.innerHTML = ''; // Clear any existing content
+  matchupsList.innerHTML = '';
 
   // Loop through each sport in the schedule
   for (const sport of Object.keys(scheduleData)) {
@@ -67,17 +63,15 @@ async function listNextMatchups() {
     sportTitle.textContent = `${sport.charAt(0).toUpperCase() + sport.slice(1)} Upcoming Match`;
     matchupsList.appendChild(sportTitle);
 
-    // Get the first upcoming matchup for the sport
     const firstMatch = sportMatchups[0];
 
-    // Fetch odds from the API
-    let odds;
+    // Fetch odds from the API    let odds;
     try {
       odds = await fetchOdds(firstMatch.teamA, firstMatch.teamB);
       //   console.log(`Odds for ${firstMatch.teamA} vs ${firstMatch.teamB}:`, odds);
     } catch (error) {
       console.error(`Error fetching odds for ${firstMatch.teamA} vs ${firstMatch.teamB}:`, error);
-      odds = {}; // Fallback to empty object in case of error
+      odds = {};
     }
 
     // Display odds for the match
@@ -93,8 +87,7 @@ async function listNextMatchups() {
   }
 }
 
-// Initialize the "Next Day" button and load the matchups on page load
 document.addEventListener('DOMContentLoaded', () => {
   setupNextDayButton();
-  listNextMatchups(); // Load the initial matchups when the page loads
+  listNextMatchups();
 });
